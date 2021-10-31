@@ -1,4 +1,6 @@
 import { Formik, Field, Form, ErrorMessage } from "formik";
+import { registerNewUser } from "../redux/usersOperation";
+import { useDispatch } from "react-redux";
 
 const validate = (values) => {
   const errors = {};
@@ -10,7 +12,7 @@ const validate = (values) => {
 
   if (!values.userPassword) {
     errors.userPassword = "Required";
-  } else if (values.userPassword.length < 6) {
+  } else if (values.userPassword.length < 7) {
     errors.userPassword = "Must be 6 characters or more";
   } else if (values.userPassword.length > 12) {
     errors.userPassword = "Must be 20 characters or less";
@@ -34,6 +36,7 @@ const validate = (values) => {
 };
 
 const RegisterForm = () => {
+  const dispatch = useDispatch();
   return (
     <Formik
       initialValues={{
@@ -44,7 +47,7 @@ const RegisterForm = () => {
       }}
       validate={validate}
       onSubmit={(values, formikBag) => {
-        console.log(values);
+        dispatch(registerNewUser(values));
         formikBag.resetForm();
       }}
     >
