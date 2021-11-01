@@ -1,23 +1,35 @@
 import { createReducer, combineReducers } from "@reduxjs/toolkit";
-import { registerNewUser } from "./usersOperation";
+import { registerNewUser, loginUser } from "./usersOperation";
 
 const userReducer = createReducer(
   {},
   {
     [registerNewUser.fulfilled]: (_, action) => ({
-      name: action.payload.name,
-      email: action.payload.email,
+      name: action.payload.user.name,
+      email: action.payload.user.email,
+    }),
+    [loginUser.fulfilled]: (_, action) => ({
+      name: action.payload.user.name,
+      email: action.payload.user.email,
     }),
   }
 );
 
-const isLoggedIn = createReducer(false, {
-  [registerNewUser.fulfilled]: true,
-  [registerNewUser.rejected]: false,
+const token = createReducer("", {
+  [registerNewUser.fulfilled]: (_, action) => action.payload.token,
+  [loginUser.fulfilled]: (_, action) => action.payload.token,
 });
 
-const authReducers = combineReducers({
+const isLoggedIn = createReducer(false, {
+  [registerNewUser.fulfilled]: () => true,
+  [registerNewUser.rejected]: () => false,
+  [loginUser.fulfilled]: () => true,
+  [loginUser.rejected]: () => false,
+});
+
+const auth = combineReducers({
   user: userReducer,
+  token,
   isLoggedIn,
 });
-export default authReducers;
+export default auth;

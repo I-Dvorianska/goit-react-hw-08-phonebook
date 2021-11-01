@@ -13,7 +13,7 @@ const validate = (values) => {
   if (!values.userPassword) {
     errors.userPassword = "Required";
   } else if (values.userPassword.length < 7) {
-    errors.userPassword = "Must be 6 characters or more";
+    errors.userPassword = "Must be 7 characters or more";
   } else if (values.userPassword.length > 12) {
     errors.userPassword = "Must be 20 characters or less";
   }
@@ -46,8 +46,11 @@ const RegisterForm = () => {
         userPasswordConfirm: "",
       }}
       validate={validate}
-      onSubmit={(values, formikBag) => {
-        dispatch(registerNewUser(values));
+      onSubmit={(
+        { userName: name, userEmail: email, userPassword: password },
+        formikBag
+      ) => {
+        dispatch(registerNewUser({ name, email, password }));
         formikBag.resetForm();
       }}
     >

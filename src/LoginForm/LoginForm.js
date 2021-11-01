@@ -1,4 +1,6 @@
 import { Formik, Field, Form, ErrorMessage } from "formik";
+import { useDispatch } from "react-redux";
+import { loginUser } from "../redux/usersOperation";
 
 const validate = (values) => {
   const errors = {};
@@ -21,6 +23,8 @@ const validate = (values) => {
 };
 
 const LoginForm = () => {
+  const dispatch = useDispatch();
+
   return (
     <Formik
       initialValues={{
@@ -28,8 +32,8 @@ const LoginForm = () => {
         password: "",
       }}
       validate={validate}
-      onSubmit={(values, formikBag) => {
-        console.log(values);
+      onSubmit={({ email, password }, formikBag) => {
+        dispatch(loginUser({ email, password }));
         formikBag.resetForm();
       }}
     >

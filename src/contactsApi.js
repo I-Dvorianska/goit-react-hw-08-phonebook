@@ -7,21 +7,6 @@ export async function fetchAllContacts() {
   return response;
 }
 
-// export async function postNewUser({ userName, userEmail, userPassword }) {
-//   // console.log(userEmail);
-//   const response = await axios({
-//     method: "post",
-//     url: "/users/signup",
-//     data: {
-//       name: userName,
-//       email: userEmail,
-//       password: userPassword,
-//     },
-//   });
-//   console.log(response);
-//   return response;
-// }
-
 export async function postContact({ name, number }) {
   return await axios({
     method: "post",

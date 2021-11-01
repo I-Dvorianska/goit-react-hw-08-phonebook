@@ -13,20 +13,34 @@ const token = {
 
 export const registerNewUser = createAsyncThunk(
   "/user/register",
-  async ({ userName, userEmail, userPassword }, { rejectWithValue }) => {
-    console.log(userName, userEmail, userPassword);
+  async (userObj, { rejectWithValue }) => {
     try {
-      const { data } = await axios.post("/users/signup", {
-        name: userName,
-        email: userEmail,
-        password: userPassword,
+      const { data } = await axios({
+        method: "post",
+        url: "/users/signup",
+        data: userObj,
       });
-      // const { data } = await postNewUser(userData);
       token.set(data.token);
-      console.log(data);
       return data;
     } catch (error) {
       return rejectWithValue(error);
+    }
+  }
+);
+
+export const loginUser = createAsyncThunk(
+  "user/login",
+  async (userData, { rejectWithValue }) => {
+    try {
+      const { data } = await axios({
+        method: "post",
+        url: "/users/login",
+        data: userData,
+      });
+      token.set(data.token);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
     }
   }
 );
