@@ -1,17 +1,27 @@
-import { Formik, Field, Form, ErrorMessage } from "formik";
+import { Formik, ErrorMessage } from "formik";
+import { AiOutlineUser, AiOutlineLock, AiOutlineMail } from "react-icons/ai";
+import { IconContext } from "react-icons";
 import { registerNewUser } from "../redux/Users/usersOperation";
 import { useDispatch } from "react-redux";
+import {
+  StyledForm,
+  InputWrapper,
+  Label,
+  InputField,
+  Error,
+  Button,
+} from "./RegisterForm.styled";
 
 const validate = (values) => {
   const errors = {};
   if (!values.userName) {
-    errors.userName = "Required";
+    errors.userName = "Required!";
   } else if (values.userName.length > 15) {
     errors.userName = "Must be 15 characters or less";
   }
 
   if (!values.userPassword) {
-    errors.userPassword = "Required";
+    errors.userPassword = "Required!";
   } else if (values.userPassword.length < 7) {
     errors.userPassword = "Must be 7 characters or more";
   } else if (values.userPassword.length > 12) {
@@ -19,13 +29,13 @@ const validate = (values) => {
   }
 
   if (!values.userPasswordConfirm) {
-    errors.userPasswordConfirm = "Required";
+    errors.userPasswordConfirm = "Required!";
   } else if (values.userPasswordConfirm !== values.userPassword) {
     errors.userPasswordConfirm = "Password and confirm password don't match";
   }
 
   if (!values.userEmail) {
-    errors.userEmail = "Required";
+    errors.userEmail = "Required!";
   } else if (
     !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.userEmail)
   ) {
@@ -55,27 +65,97 @@ const RegisterForm = () => {
       }}
     >
       {({ isValid, dirty }) => (
-        <Form>
-          <label htmlFor="userName">Name</label>
-          <Field name="userName" type="text" />
-          <ErrorMessage name="userName" />
+        <StyledForm>
+          <InputWrapper>
+            <IconContext.Provider
+              value={{
+                color: "#dd571c",
+                style: {
+                  verticalAlign: "middle",
+                  marginBottom: "4px",
+                  marginRight: "4px",
+                },
+              }}
+            >
+              <Label htmlFor="userName">
+                <AiOutlineUser /> Name
+              </Label>
+            </IconContext.Provider>
+            <InputField name="userName" type="text" autoComplete="off" />
+            <ErrorMessage name="userName">
+              {(msg) => <Error>{msg}</Error>}
+            </ErrorMessage>
+          </InputWrapper>
 
-          <label htmlFor="userEmail">Email</label>
-          <Field name="userEmail" type="email" />
-          <ErrorMessage name="userEmail" />
+          <InputWrapper>
+            <IconContext.Provider
+              value={{
+                color: "#dd571c",
+                style: {
+                  verticalAlign: "middle",
+                  marginBottom: "4px",
+                  marginRight: "4px",
+                },
+              }}
+            >
+              <Label htmlFor="userEmail">
+                <AiOutlineMail /> Email
+              </Label>
+            </IconContext.Provider>
+            <InputField name="userEmail" type="email" autoComplete="off" />
+            <ErrorMessage name="userEmail">
+              {(msg) => <Error>{msg}</Error>}
+            </ErrorMessage>
+          </InputWrapper>
 
-          <label htmlFor="userPassword">Password</label>
-          <Field name="userPassword" type="password" />
-          <ErrorMessage name="userPassword" />
+          <InputWrapper>
+            <IconContext.Provider
+              value={{
+                color: "#dd571c",
+                style: {
+                  verticalAlign: "middle",
+                  marginBottom: "4px",
+                  marginRight: "4px",
+                },
+              }}
+            >
+              <Label htmlFor="userPassword">
+                <AiOutlineLock />
+                Password
+              </Label>
+            </IconContext.Provider>
+            <InputField name="userPassword" type="password" />
+            <ErrorMessage name="userPassword">
+              {(msg) => <Error>{msg}</Error>}
+            </ErrorMessage>
+          </InputWrapper>
 
-          <label htmlFor="userPasswordConfirm">Confirm password</label>
-          <Field name="userPasswordConfirm" type="password" />
-          <ErrorMessage name="userPasswordConfirm" />
+          <InputWrapper>
+            <IconContext.Provider
+              value={{
+                color: "#dd571c",
+                style: {
+                  verticalAlign: "middle",
+                  marginBottom: "4px",
+                  marginRight: "4px",
+                },
+              }}
+            >
+              <Label htmlFor="userPasswordConfirm">
+                <AiOutlineLock />
+                Confirm password
+              </Label>
+            </IconContext.Provider>
+            <InputField name="userPasswordConfirm" type="password" />
+            <ErrorMessage name="userPasswordConfirm">
+              {(msg) => <Error>{msg}</Error>}
+            </ErrorMessage>
+          </InputWrapper>
 
-          <button type="submit" disabled={!isValid || !dirty}>
-            Register
-          </button>
-        </Form>
+          <Button type="submit" disabled={!isValid || !dirty}>
+            Register now
+          </Button>
+        </StyledForm>
       )}
     </Formik>
   );

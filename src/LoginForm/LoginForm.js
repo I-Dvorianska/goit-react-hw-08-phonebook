@@ -1,12 +1,22 @@
-import { Formik, Field, Form, ErrorMessage } from "formik";
+import { Formik, ErrorMessage } from "formik";
 import { useDispatch } from "react-redux";
+import { IconContext } from "react-icons";
+import { AiOutlineLock, AiOutlineMail } from "react-icons/ai";
 import { loginUser } from "../redux/Users/usersOperation";
-
+// import { Button, StyledForm, Label, InputField } from "./LoginForm.styled";
+import {
+  Button,
+  StyledForm,
+  Label,
+  InputField,
+  InputWrapper,
+  Error,
+} from "../RegisterForm/RegisterForm.styled";
 const validate = (values) => {
   const errors = {};
 
   if (!values.password) {
-    errors.password = "Required";
+    errors.password = "Required!";
   } else if (values.password.length < 7) {
     errors.password = "Must be 7 characters or more";
   } else if (values.password.length > 12) {
@@ -14,7 +24,7 @@ const validate = (values) => {
   }
 
   if (!values.email) {
-    errors.email = "Required";
+    errors.email = "Required!";
   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
     errors.email = "Invalid email address";
   }
@@ -38,19 +48,55 @@ const LoginForm = () => {
       }}
     >
       {({ isValid, dirty }) => (
-        <Form>
-          <label htmlFor="email">Email</label>
-          <Field name="email" type="email" />
-          <ErrorMessage name="email" />
+        <StyledForm>
+          <InputWrapper>
+            <IconContext.Provider
+              value={{
+                color: "#dd571c",
+                style: {
+                  verticalAlign: "middle",
+                  marginBottom: "4px",
+                  marginRight: "4px",
+                },
+              }}
+            >
+              <Label htmlFor="email">
+                <AiOutlineMail />
+                Email
+              </Label>
+            </IconContext.Provider>
+            <InputField name="email" type="email" autoComplete="off" />
+            <ErrorMessage name="email">
+              {(msg) => <Error>{msg}</Error>}
+            </ErrorMessage>
+          </InputWrapper>
 
-          <label htmlFor="password">Password</label>
-          <Field name="password" type="password" />
-          <ErrorMessage name="password" />
+          <InputWrapper>
+            <IconContext.Provider
+              value={{
+                color: "#dd571c",
+                style: {
+                  verticalAlign: "middle",
+                  marginBottom: "4px",
+                  marginRight: "4px",
+                },
+              }}
+            >
+              <Label htmlFor="password">
+                <AiOutlineLock />
+                Password
+              </Label>
+            </IconContext.Provider>
+            <InputField name="password" type="password" />
+            <ErrorMessage name="password">
+              {(msg) => <Error>{msg}</Error>}
+            </ErrorMessage>
+          </InputWrapper>
 
-          <button type="submit" disabled={!isValid || !dirty}>
+          <Button type="submit" disabled={!isValid || !dirty}>
             Login
-          </button>
-        </Form>
+          </Button>
+        </StyledForm>
       )}
     </Formik>
   );

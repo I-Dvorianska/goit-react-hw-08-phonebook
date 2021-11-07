@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 export const Wrapper = styled.div`
   padding: 12px 16px;
-  background-color: #f5c181;
+  background-color: #ee9b4d;
 `;
 
 export const LoggedInMenu = styled.div`
@@ -13,7 +13,7 @@ export const LoggedInMenu = styled.div`
 `;
 
 export const ContactsLink = styled(NavLink)({
-  color: " #fff",
+  color: "#fff",
   textDecoration: "none",
   fontWeight: "600",
   fontSize: "20px",

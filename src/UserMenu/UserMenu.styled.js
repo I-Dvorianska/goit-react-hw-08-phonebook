@@ -12,7 +12,7 @@ export const Button = styled.button`
   font-size: 16px;
   height: fit-content;
   color: #fff;
-  background-color: #f5c181;
+  background-color: #ee9b4d;
   border: 1px solid #fff;
   border-radius: 2px;
   &:hover {
