@@ -1,6 +1,6 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
-import contactsReducer from "./contactsReducer";
-import auth from "./usersReducer";
+import contactsReducer from "../redux/Contacts/contactsReducer";
+import auth from "../redux/Users/usersReducer";
 
 const rootReducer = combineReducers({
   auth,

@@ -1,17 +1,12 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import {
-  fetchAllContacts,
-  postContact,
-  deleteContactById,
-} from "../contactsApi";
+import axios from "axios";
 
 export const fetchContacts = createAsyncThunk(
   "contacts/fetchContacts",
   async (_, { rejectWithValue }) => {
     try {
-      const contacts = await fetchAllContacts();
-      console.log(contacts.data);
-      return contacts.data;
+      const response = await axios.get("/contacts");
+      return response.data;
     } catch (error) {
       return rejectWithValue(error.message);
     }
@@ -22,7 +17,7 @@ export const addNewContact = createAsyncThunk(
   "contacts/postContact",
   async (contactObj, { rejectWithValue }) => {
     try {
-      const { data } = await postContact(contactObj);
+      const { data } = await axios.post("/contacts", contactObj);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -30,11 +25,22 @@ export const addNewContact = createAsyncThunk(
   }
 );
 
+// export const updateContact = createAsyncThunk(
+//   "contacts/updateContact",
+//   async (id, { rejectWithValue }) => {
+//     try {
+//       const { data } = await axios.patch(`/contacts/${id}`);
+//     } catch (error) {
+//       return rejectWithValue(error.message);
+//     }
+//   }
+// );
+
 export const deleteContact = createAsyncThunk(
   "contacts/deleteContact",
   async (contactId, { rejectWithValue }) => {
     try {
-      await deleteContactById(contactId);
+      await axios.delete(`/contacts/${contactId}`);
       return contactId;
     } catch (error) {
       return rejectWithValue(error.message);

@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 import { createReducer } from "@reduxjs/toolkit";
-import { getFilterName } from "./actions";
+import { getFilterName } from "../Contacts/actions";
 import {
   fetchContacts,
   addNewContact,

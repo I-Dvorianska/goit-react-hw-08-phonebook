@@ -1,5 +1,5 @@
 import { Formik, Field, Form, ErrorMessage } from "formik";
-import { registerNewUser } from "../redux/usersOperation";
+import { registerNewUser } from "../redux/Users/usersOperation";
 import { useDispatch } from "react-redux";
 
 const validate = (values) => {
