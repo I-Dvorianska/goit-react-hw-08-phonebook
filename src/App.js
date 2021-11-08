@@ -1,32 +1,25 @@
-import { Route, Switch } from "react-router";
-// import ContactForm from "./ContactForm/ContactForm";
-// import ContactList from "./ContactList/ContactList";
-// import Filter from "./Filter/Filter";
+import { Switch } from "react-router";
 import ContactsView from "./ContactsView/ContactsView";
 import RegisterForm from "./RegisterForm/RegisterForm";
-// import { PrimaryTitle, SecondaryTitle } from "./App.styled";
 import LoginForm from "./LoginForm/LoginForm";
 import AppBar from "./AppBar/AppBar";
+import PrivateRouter from "./Routers/PrivateRouter";
+import PublicRouter from "./Routers/PublicRouter";
 
 function App() {
   return (
     <>
       <AppBar />
       <Switch>
-        <Route path="/register">
+        <PublicRouter path="/register" restricted>
           <RegisterForm />
-        </Route>
-        <Route path="/login">
+        </PublicRouter>
+        <PublicRouter path="/login" restricted>
           <LoginForm />
-        </Route>
-        <Route path="/contacts">
+        </PublicRouter>
+        <PrivateRouter path="/contacts">
           <ContactsView />
-          {/* <PrimaryTitle>Phonebook</PrimaryTitle>
-          <ContactForm />
-          <SecondaryTitle>Contacts</SecondaryTitle>
-          <Filter />
-          <ContactList /> */}
-        </Route>
+        </PrivateRouter>
       </Switch>
     </>
   );

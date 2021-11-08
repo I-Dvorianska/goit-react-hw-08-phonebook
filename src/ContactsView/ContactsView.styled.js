@@ -14,8 +14,3 @@ export const ContactsWrapper = styled.div`
   justify-content: space-around;
   margin-top: 40px;
 `;
-
-export const FormWrapper = styled.div`
-  position: fixed;
-  left: 50px;
-`;

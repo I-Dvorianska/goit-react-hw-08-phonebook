@@ -2,7 +2,6 @@ import {
   PrimaryTitle,
   SecondaryTitle,
   ContactsWrapper,
-  FormWrapper,
 } from "./ContactsView.styled";
 import Filter from "../Filter/Filter";
 import ContactList from "../ContactList/ContactList";
@@ -11,10 +10,10 @@ import ContactForm from "../ContactForm/ContactForm";
 export const ContactsView = () => {
   return (
     <ContactsWrapper>
-      <FormWrapper>
+      <div>
         <PrimaryTitle>Phonebook</PrimaryTitle>
         <ContactForm />
-      </FormWrapper>
+      </div>
       <div>
         <SecondaryTitle>Contacts</SecondaryTitle>
         <Filter />
