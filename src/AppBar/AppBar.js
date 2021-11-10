@@ -1,4 +1,3 @@
-// import { NavLink } from "react-router-dom";
 import UserMenu from "../UserMenu/UserMenu";
 import { isUserLoggedIn } from "../redux/Selectors/userSelectors";
 import { useSelector } from "react-redux";
