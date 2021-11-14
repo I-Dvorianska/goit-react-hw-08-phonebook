@@ -11,6 +11,6 @@ export const SecondaryTitle = styled.h2`
 export const ContactsWrapper = styled.div`
   display: flex;
   align-items: baseline;
-  justify-content: space-around;
+  justify-content: space-evenly;
   margin-top: 40px;
 `;
