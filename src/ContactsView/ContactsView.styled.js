@@ -5,7 +5,7 @@ export const PrimaryTitle = styled.h1`
 `;
 
 export const SecondaryTitle = styled.h2`
-  margin-left: 75px;
+  text-align: center;
 `;
 
 export const ContactsWrapper = styled.div`

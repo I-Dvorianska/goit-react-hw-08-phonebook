@@ -7,10 +7,11 @@ export const Wrapper = styled.div`
 `;
 
 export const Input = styled.input`
-  padding: 4px;
-  margin-top: 4px;
+  padding: 6px;
+  margin-top: 10px;
 `;
 
 export const Label = styled.label`
+  font-size: 18px;
   font-weight: 500;
 `;
