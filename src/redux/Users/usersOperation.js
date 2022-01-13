@@ -1,5 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import toast from "react-hot-toast";
+
 axios.defaults.baseURL = "https://connections-api.herokuapp.com";
 
 const token = {
@@ -16,10 +18,12 @@ export const registerNewUser = createAsyncThunk(
   async (userObj, { rejectWithValue }) => {
     try {
       const { data } = await axios.post("/users/signup", userObj);
-
       token.set(data.token);
       return data;
     } catch (error) {
+      if (error.response.data.name === "MongoError") {
+        toast.error("This email address is already being used");
+      }
       return rejectWithValue(error.message);
     }
   }
@@ -33,6 +37,7 @@ export const loginUser = createAsyncThunk(
       token.set(data.token);
       return data;
     } catch (error) {
+      toast.error("Invalid email or password");
       return rejectWithValue(error.message);
     }
   }
@@ -64,7 +69,6 @@ export const fetchCurrentUser = createAsyncThunk(
         const { data } = await axios.get("/users/current");
         return data;
       } catch (error) {
-        console.log("pass to fetcning");
         return thunkAPI.rejectWithValue(error.message);
       }
     }

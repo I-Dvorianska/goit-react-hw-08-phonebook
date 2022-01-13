@@ -20,4 +20,8 @@ export const LoginLinks = styled(NavLink)({
   textDecoration: "none",
   fontWeight: "600",
   fontSize: "20px",
+
+  '&[aria-current="page"]': {
+    textDecoration: "underline",
+  },
 });

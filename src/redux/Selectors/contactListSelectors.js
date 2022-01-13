@@ -6,14 +6,24 @@ export const getContacts = (state) => state.contacts.items;
 export const visibleContacts = createSelector(
   [getFilter, getContacts],
   (filter, contacts) => {
-    if (filter !== "") {
-      if (contacts !== []) {
-        return contacts.filter((contact) =>
-          contact.name.toLowerCase().includes(filter)
-        );
-      }
-    } else {
-      return contacts;
+    // console.log(contacts);
+
+    if (contacts !== []) {
+      return contacts.filter((contact) =>
+        contact.name.toLowerCase().includes(filter)
+      );
     }
+    return contacts;
   }
 );
+
+// export const visibleContacts = createSelector(
+//   [getContacts, getFilter],
+//   (contacts, userName) => {
+//     if (contacts) {
+//       return contacts.filter((item) =>
+//         item.name.toLowerCase().includes(userName.toLowerCase())
+//       );
+//     }
+//   }
+// );

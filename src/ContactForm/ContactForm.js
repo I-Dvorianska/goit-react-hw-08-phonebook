@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import toast, { Toaster } from "react-hot-toast";
 import { addNewContact } from "../redux/Contacts/contactsOperation";
-import { contacts } from "../redux/Selectors/contactFormSelectors";
+import { getContacts } from "../redux/Selectors/contactListSelectors";
 import { StyledForm, Label, Input, Button, Error } from "./ContactForm.styled";
 import { Formik, ErrorMessage } from "formik";
 
@@ -30,7 +30,7 @@ const validate = (values) => {
 function ContactForm() {
   const dispatch = useDispatch();
   const notify = (name) => toast(`${name} is already in contacts`);
-  const stateContacts = useSelector(contacts);
+  const stateContacts = useSelector(getContacts);
 
   return (
     <>

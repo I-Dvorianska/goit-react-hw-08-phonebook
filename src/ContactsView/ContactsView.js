@@ -4,7 +4,7 @@ import {
   ContactsWrapper,
 } from "./ContactsView.styled";
 import Filter from "../Filter/Filter";
-import DataTable from "../ContactList/ContactList";
+import ContactsList from "../ContactList/ContactList";
 import ContactForm from "../ContactForm/ContactForm";
 
 export const ContactsView = () => {
@@ -16,7 +16,7 @@ export const ContactsView = () => {
       </div>
       <div>
         <SecondaryTitle>Contacts</SecondaryTitle>
-        <DataTable />
+        <ContactsList />
       </div>
       <div>
         <Filter />

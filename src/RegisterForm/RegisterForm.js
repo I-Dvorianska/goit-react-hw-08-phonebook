@@ -1,5 +1,6 @@
 import { Formik, ErrorMessage } from "formik";
 import { AiOutlineUser, AiOutlineLock, AiOutlineMail } from "react-icons/ai";
+import { Toaster } from "react-hot-toast";
 import { IconContext } from "react-icons";
 import { registerNewUser } from "../redux/Users/usersOperation";
 import { useDispatch } from "react-redux";
@@ -48,116 +49,128 @@ const validate = (values) => {
 const RegisterForm = () => {
   const dispatch = useDispatch();
   return (
-    <Formik
-      initialValues={{
-        userName: "",
-        userEmail: "",
-        userPassword: "",
-        userPasswordConfirm: "",
-      }}
-      validate={validate}
-      onSubmit={(
-        { userName: name, userEmail: email, userPassword: password },
-        formikBag
-      ) => {
-        dispatch(registerNewUser({ name, email, password }));
-        formikBag.resetForm();
-      }}
-    >
-      {({ isValid, dirty }) => (
-        <StyledForm>
-          <InputWrapper>
-            <IconContext.Provider
-              value={{
-                color: "#dd571c",
-                style: {
-                  verticalAlign: "middle",
-                  marginBottom: "4px",
-                  marginRight: "4px",
-                },
-              }}
-            >
-              <Label htmlFor="userName">
-                <AiOutlineUser /> Name
-              </Label>
-            </IconContext.Provider>
-            <InputField name="userName" type="text" autoComplete="off" />
-            <ErrorMessage name="userName">
-              {(msg) => <Error>{msg}</Error>}
-            </ErrorMessage>
-          </InputWrapper>
+    <>
+      <Toaster
+        position="top-center"
+        toastOptions={{
+          duration: 3000,
+          style: {
+            background: "#fff",
+            color: "#dc1c13",
+          },
+        }}
+      />
+      <Formik
+        initialValues={{
+          userName: "",
+          userEmail: "",
+          userPassword: "",
+          userPasswordConfirm: "",
+        }}
+        validate={validate}
+        onSubmit={(
+          { userName: name, userEmail: email, userPassword: password },
+          formikBag
+        ) => {
+          dispatch(registerNewUser({ name, email, password }));
+          formikBag.resetForm();
+        }}
+      >
+        {({ isValid, dirty }) => (
+          <StyledForm>
+            <InputWrapper>
+              <IconContext.Provider
+                value={{
+                  color: "#dd571c",
+                  style: {
+                    verticalAlign: "middle",
+                    marginBottom: "4px",
+                    marginRight: "4px",
+                  },
+                }}
+              >
+                <Label htmlFor="userName">
+                  <AiOutlineUser /> Name
+                </Label>
+              </IconContext.Provider>
+              <InputField name="userName" type="text" autoComplete="off" />
+              <ErrorMessage name="userName">
+                {(msg) => <Error>{msg}</Error>}
+              </ErrorMessage>
+            </InputWrapper>
 
-          <InputWrapper>
-            <IconContext.Provider
-              value={{
-                color: "#dd571c",
-                style: {
-                  verticalAlign: "middle",
-                  marginBottom: "4px",
-                  marginRight: "4px",
-                },
-              }}
-            >
-              <Label htmlFor="userEmail">
-                <AiOutlineMail /> Email
-              </Label>
-            </IconContext.Provider>
-            <InputField name="userEmail" type="email" autoComplete="off" />
-            <ErrorMessage name="userEmail">
-              {(msg) => <Error>{msg}</Error>}
-            </ErrorMessage>
-          </InputWrapper>
+            <InputWrapper>
+              <IconContext.Provider
+                value={{
+                  color: "#dd571c",
+                  style: {
+                    verticalAlign: "middle",
+                    marginBottom: "4px",
+                    marginRight: "4px",
+                  },
+                }}
+              >
+                <Label htmlFor="userEmail">
+                  <AiOutlineMail /> Email
+                </Label>
+              </IconContext.Provider>
+              <InputField name="userEmail" type="email" autoComplete="off" />
+              <ErrorMessage name="userEmail">
+                {(msg) => <Error>{msg}</Error>}
+              </ErrorMessage>
+            </InputWrapper>
 
-          <InputWrapper>
-            <IconContext.Provider
-              value={{
-                color: "#dd571c",
-                style: {
-                  verticalAlign: "middle",
-                  marginBottom: "4px",
-                  marginRight: "4px",
-                },
-              }}
-            >
-              <Label htmlFor="userPassword">
-                <AiOutlineLock />
-                Password
-              </Label>
-            </IconContext.Provider>
-            <InputField name="userPassword" type="password" />
-            <ErrorMessage name="userPassword">
-              {(msg) => <Error>{msg}</Error>}
-            </ErrorMessage>
-          </InputWrapper>
+            <InputWrapper>
+              <IconContext.Provider
+                value={{
+                  color: "#dd571c",
+                  style: {
+                    verticalAlign: "middle",
+                    marginBottom: "4px",
+                    marginRight: "4px",
+                  },
+                }}
+              >
+                <Label htmlFor="userPassword">
+                  <AiOutlineLock />
+                  Password
+                </Label>
+              </IconContext.Provider>
+              <InputField name="userPassword" type="password" />
+              <ErrorMessage name="userPassword">
+                {(msg) => <Error>{msg}</Error>}
+              </ErrorMessage>
+            </InputWrapper>
 
-          <InputWrapper>
-            <IconContext.Provider
-              value={{
-                color: "#dd571c",
-                style: {
-                  verticalAlign: "middle",
-                  marginBottom: "4px",
-                  marginRight: "4px",
-                },
-              }}
-            >
-              <Label htmlFor="userPasswordConfirm">
-                <AiOutlineLock />
-                Confirm password
-              </Label>
-            </IconContext.Provider>
-            <InputField name="userPasswordConfirm" type="password" />
-            <ErrorMessage name="userPasswordConfirm">
-              {(msg) => <Error>{msg}</Error>}
-            </ErrorMessage>
-          </InputWrapper>
+            <InputWrapper>
+              <IconContext.Provider
+                value={{
+                  color: "#dd571c",
+                  style: {
+                    verticalAlign: "middle",
+                    marginBottom: "4px",
+                    marginRight: "4px",
+                  },
+                }}
+              >
+                <Label htmlFor="userPasswordConfirm">
+                  <AiOutlineLock />
+                  Confirm password
+                </Label>
+              </IconContext.Provider>
+              <InputField name="userPasswordConfirm" type="password" />
+              <ErrorMessage name="userPasswordConfirm">
+                {(msg) => <Error>{msg}</Error>}
+              </ErrorMessage>
+            </InputWrapper>
 
-          <Button type="submit" disabled={!isValid || !dirty}>
-            Register now
-          </Button>
-        </StyledForm>
-      )}
-    </Formik>
+            <Button type="submit" disabled={!isValid || !dirty}>
+              Register now
+            </Button>
+          </StyledForm>
+        )}
+      </Formik>
+    </>
   );
 };
 
