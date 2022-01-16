@@ -12,5 +12,4 @@ export const ContactsWrapper = styled.div`
   display: flex;
   align-items: baseline;
   justify-content: space-evenly;
-  margin-top: 40px;
 `;

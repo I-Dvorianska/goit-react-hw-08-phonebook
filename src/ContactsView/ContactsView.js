@@ -4,8 +4,8 @@ import {
   ContactsWrapper,
 } from "./ContactsView.styled";
 import Filter from "../Filter/Filter";
-import ContactsList from "../ContactList/ContactList";
 import ContactForm from "../ContactForm/ContactForm";
+import ContactsList from "../ContactList/ContactList";
 
 export const ContactsView = () => {
   return (

@@ -1,6 +1,6 @@
 import { Wrapper, Input, Label } from "./Filter.styled";
 import { useSelector, useDispatch } from "react-redux";
-import { getFilterName } from "../redux/Contacts/actions";
+import { getFilterName, resetPage } from "../redux/Contacts/actions";
 import { filter } from "../redux/Selectors/filterSelectors";
 
 const Filter = () => {
@@ -14,7 +14,10 @@ const Filter = () => {
         type="text"
         name="filter"
         value={formFilter}
-        onChange={(e) => dispatch(getFilterName(e.target.value.toLowerCase()))}
+        onChange={(e) => {
+          dispatch(getFilterName(e.target.value.toLowerCase()));
+          dispatch(resetPage(0));
+        }}
       />
     </Wrapper>
   );
