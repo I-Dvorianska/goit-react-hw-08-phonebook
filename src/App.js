@@ -5,6 +5,7 @@ import ContactsView from "./ContactsView/ContactsView";
 import RegisterForm from "./RegisterForm/RegisterForm";
 import LoginForm from "./LoginForm/LoginForm";
 import AppBar from "./AppBar/AppBar";
+import HomePage from "./HomePage/HomePage";
 import PrivateRouter from "./Routers/PrivateRouter";
 import PublicRouter from "./Routers/PublicRouter";
 import { fetchCurrentUser } from "./redux/Users/usersOperation";
@@ -25,6 +26,9 @@ function App() {
           <AppBar />
 
           <Switch>
+            <PublicRouter path="/" exact>
+              <HomePage />
+            </PublicRouter>
             <PublicRouter path="/register" restricted>
               <RegisterForm />
             </PublicRouter>
