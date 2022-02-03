@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { IconContext } from "react-icons";
 import { AiOutlineDelete } from "react-icons/ai";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
   fetchContacts,
   deleteContact,
@@ -19,6 +19,7 @@ const ContactsList = () => {
   const dispatch = useDispatch();
   const filteredContacts = useSelector(visibleContacts);
   const listPage = useSelector(getPage);
+  const [over, setOver] = useState(false);
 
   const sortedContacts =
     filteredContacts !== []
@@ -26,7 +27,6 @@ const ContactsList = () => {
       : [];
 
   const contactsArr = sortedContacts !== [] ? createList(sortedContacts) : [];
-  console.log(contactsArr);
 
   useEffect(() => {
     dispatch(fetchContacts());
@@ -61,10 +61,19 @@ const ContactsList = () => {
                 <td>{contact.name}</td>
                 <td>{contact.number}</td>
                 <td>
-                  <IconContext.Provider value={{ color: "#dd571c" }}>
-                    <AiOutlineDelete
-                      onClick={() => dispatch(deleteContact(contact.id))}
-                    />
+                  <IconContext.Provider
+                    value={{
+                      color: "#e36414",
+                    }}
+                  >
+                    <div>
+                      <AiOutlineDelete
+                        onMouseOver={() => setOver(true)}
+                        onMouseLeave={() => setOver(false)}
+                        style={over ? { cursor: "pointer" } : {}}
+                        onClick={() => dispatch(deleteContact(contact.id))}
+                      />
+                    </div>
                   </IconContext.Provider>
                 </td>
               </TableRow>

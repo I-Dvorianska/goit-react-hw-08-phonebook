@@ -10,10 +10,11 @@ export const Button = styled.button`
   margin-left: 20px;
   font-weight: 600;
   font-size: 16px;
+  font-family: "Encode Sans Condensed";
   height: fit-content;
   color: #fff;
-  background-color: #ee9b4d;
-  border: 1px solid #fff;
+  background-color: #e36414;
+  border: 1px solid #e36414;
   border-radius: 2px;
   &:hover {
     cursor: pointer;

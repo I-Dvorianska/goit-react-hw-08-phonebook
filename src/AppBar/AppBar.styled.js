@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 export const Wrapper = styled.div`
   padding: 12px 16px;
-  background-color: #ee9b4d;
+  background-color: #1b5e64;
 `;
 
 export const LoggedInMenu = styled.div`

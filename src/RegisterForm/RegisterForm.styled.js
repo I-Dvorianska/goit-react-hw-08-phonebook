@@ -19,7 +19,7 @@ export const InputWrapper = styled.div`
 `;
 
 export const Label = styled.label`
-  font-size: 14px;
+  font-size: 16px;
   margin-bottom: 4px;
 `;
 
@@ -30,29 +30,31 @@ export const InputField = styled(Field)({
 });
 
 export const Error = styled.div`
-  color: #dd571c;
-  font-size: 12px;
-  margin-top: 2px;
+  color: #c50000;
+  font-size: 14px;
 `;
 
 export const Button = styled.button`
-  padding: 6px 8px;
+  padding: 8px 10px;
   margin-top: 20px;
   margin-bottom: 20px;
   color: #fff;
-  background-color: #dd571c;
-  border: 1px solid #dd571c;
+  background-color: #e36414;
+  border: 1px solid #e36414;
   border-radius: 2px;
   font-size: 14px;
   font-weight: 600;
+  font-family: "Encode Sans Condensed";
   &:hover {
     cursor: pointer;
+    transform: scale(1.1);
   }
   :disabled {
     background-color: #ccc;
     border-color: #ccc;
     &:hover {
       cursor: auto;
+      transform: scale(1);
     }
   }
 `;

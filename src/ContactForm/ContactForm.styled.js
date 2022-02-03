@@ -4,46 +4,42 @@ import { Field, Form } from "formik";
 export const StyledForm = styled(Form)({
   display: "inline-flex",
   flexDirection: "column",
-  marginLeft: "40px",
-  padding: "30px",
+  padding: "0px 30px",
   border: "1px solid #ccc",
   borderRadius: "4px",
 });
 
 export const Label = styled.label`
-  font-size: 14px;
+  font-size: 16px;
   margin-bottom: 4px;
+  margin-top: 20px;
 `;
 
 export const Input = styled(Field)({
   padding: "8px 10px",
   maxWidth: "100%",
   fontSize: "14px",
-  marginBottom: "20px",
 });
 
 export const Button = styled.button`
-  padding: 6px 8px;
-
-  margin-bottom: 20px;
+  padding: 8px 10px;
+  margin: 20px auto 20px auto;
   width: fit-content;
-  margin-left: auto;
-  margin-right: auto;
+
   color: #fff;
-  background-color: #dd571c;
-  border: 1px solid #dd571c;
+  background-color: #e36414;
+  border: 1px solid #e36414;
   border-radius: 2px;
   font-size: 14px;
+  font-family: "Encode Sans Condensed";
   font-weight: 600;
   &:hover {
     cursor: pointer;
-    background-color: #ee9b4d;
-    border-color: #ee9b4d;
+    transform: scale(1.1);
   }
 `;
 
 export const Error = styled.div`
-  color: #dd571c;
-  font-size: 12px;
-  margin-top: 2px;
+  color: #c50000;
+  font-size: 14px;
 `;
