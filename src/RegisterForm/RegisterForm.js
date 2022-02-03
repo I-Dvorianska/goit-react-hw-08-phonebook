@@ -1,5 +1,6 @@
 import { Formik, ErrorMessage } from "formik";
 import { AiOutlineUser, AiOutlineLock, AiOutlineMail } from "react-icons/ai";
+import { BackgroundIcons } from "../BackgroundsIcons/BackgroundsIcons";
 import { Toaster } from "react-hot-toast";
 import { IconContext } from "react-icons";
 import { registerNewUser } from "../redux/Users/usersOperation";
@@ -50,6 +51,7 @@ const RegisterForm = () => {
   const dispatch = useDispatch();
   return (
     <>
+      <BackgroundIcons />
       <Toaster
         position="top-center"
         toastOptions={{

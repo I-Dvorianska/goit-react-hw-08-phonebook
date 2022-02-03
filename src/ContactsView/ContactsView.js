@@ -1,3 +1,4 @@
+import { BackgroundIcons } from "../BackgroundsIcons/BackgroundsIcons";
 import {
   PrimaryTitle,
   SecondaryTitle,
@@ -10,6 +11,8 @@ import ContactsList from "../ContactList/ContactList";
 export const ContactsView = () => {
   return (
     <ContactsWrapper>
+      <BackgroundIcons />
+
       <div>
         <PrimaryTitle>Phonebook</PrimaryTitle>
         <ContactForm />
@@ -25,5 +28,3 @@ export const ContactsView = () => {
   );
 };
 export default ContactsView;
-
-// TiPhoneOutline; CgPhone FaRegAddressBook BsPersonCheckFill VscPersonAdd
