@@ -1,6 +1,10 @@
 import { combineReducers } from "redux";
 import { createReducer } from "@reduxjs/toolkit";
-import { getFilterName, getPageNumber, resetPage } from "../Contacts/actions";
+import {
+  getFilterName,
+  incrementPageNumber,
+  resetPage,
+} from "../Contacts/actions";
 import {
   fetchContacts,
   addNewContact,
@@ -19,7 +23,7 @@ const filterReducer = createReducer("", {
 });
 
 const pageReducer = createReducer(0, {
-  [getPageNumber]: (state, action) => (state = state + action.payload),
+  [incrementPageNumber]: (state, action) => (state = state + action.payload),
   [resetPage]: (state, action) => (state = action.payload),
 });
 

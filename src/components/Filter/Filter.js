@@ -1,7 +1,7 @@
 import { Wrapper, Input, Label } from "./Filter.styled";
 import { useSelector, useDispatch } from "react-redux";
-import { getFilterName, resetPage } from "../redux/Contacts/actions";
-import { filter } from "../redux/Selectors/filterSelectors";
+import { getFilterName, resetPage } from "../../redux/Contacts/actions";
+import { filter } from "../../redux/Selectors/filterSelectors";
 
 const Filter = () => {
   const formFilter = useSelector(filter);

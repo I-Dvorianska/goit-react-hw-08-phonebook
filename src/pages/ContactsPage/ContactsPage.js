@@ -1,12 +1,12 @@
-import { BackgroundIcons } from "../BackgroundsIcons/BackgroundsIcons";
+import { BackgroundIcons } from "../../components/BackgroundsIcons/BackgroundsIcons";
 import {
   PrimaryTitle,
   SecondaryTitle,
   ContactsWrapper,
-} from "./ContactsView.styled";
-import Filter from "../Filter/Filter";
-import ContactForm from "../ContactForm/ContactForm";
-import ContactsList from "../ContactList/ContactList";
+} from "./ContactsPage.styled";
+import Filter from "../../components/Filter/Filter";
+import ContactForm from "../../components/ContactForm/ContactForm";
+import ContactsList from "../../components/ContactList/ContactList";
 
 export const ContactsView = () => {
   return (

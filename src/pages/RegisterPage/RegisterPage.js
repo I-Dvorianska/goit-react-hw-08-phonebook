@@ -1,9 +1,9 @@
 import { Formik, ErrorMessage } from "formik";
 import { AiOutlineUser, AiOutlineLock, AiOutlineMail } from "react-icons/ai";
-import { BackgroundIcons } from "../BackgroundsIcons/BackgroundsIcons";
+import { BackgroundIcons } from "../../components/BackgroundsIcons/BackgroundsIcons";
 import { Toaster } from "react-hot-toast";
 import { IconContext } from "react-icons";
-import { registerNewUser } from "../redux/Users/usersOperation";
+import { registerNewUser } from "../../redux/Users/usersOperation";
 import { useDispatch } from "react-redux";
 import {
   StyledForm,
@@ -12,7 +12,7 @@ import {
   InputField,
   Error,
   Button,
-} from "./RegisterForm.styled";
+} from "./RegisterPage.styled";
 
 const validate = (values) => {
   const errors = {};

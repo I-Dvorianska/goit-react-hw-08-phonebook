@@ -1,4 +1,4 @@
-import { LoginLinks, List, ListItem } from "./FirstNavigation.styled";
+import { LoginLinks, List, ListItem } from "./PublicNavigation.styled";
 
 const FirstNavigation = () => {
   return (

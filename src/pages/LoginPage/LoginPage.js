@@ -3,8 +3,8 @@ import { useDispatch } from "react-redux";
 import { IconContext } from "react-icons";
 import { Toaster } from "react-hot-toast";
 import { AiOutlineLock, AiOutlineMail } from "react-icons/ai";
-import { BackgroundIcons } from "../BackgroundsIcons/BackgroundsIcons";
-import { loginUser } from "../redux/Users/usersOperation";
+import { BackgroundIcons } from "../../components/BackgroundsIcons/BackgroundsIcons";
+import { loginUser } from "../../redux/Users/usersOperation";
 import {
   Button,
   StyledForm,
@@ -12,7 +12,7 @@ import {
   InputField,
   InputWrapper,
   Error,
-} from "../RegisterForm/RegisterForm.styled";
+} from "../RegisterPage/RegisterPage.styled";
 
 const validate = (values) => {
   const errors = {};

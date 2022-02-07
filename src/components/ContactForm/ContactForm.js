@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import toast, { Toaster } from "react-hot-toast";
-import { addNewContact } from "../redux/Contacts/contactsOperation";
-import { getContacts } from "../redux/Selectors/contactListSelectors";
+import { addNewContact } from "../../redux/Contacts/contactsOperation";
+import { getContacts } from "../../redux/Selectors/contactListSelectors";
 import { StyledForm, Label, Input, Button, Error } from "./ContactForm.styled";
 import { Formik, ErrorMessage } from "formik";
 

@@ -5,13 +5,12 @@ import { useEffect, useState } from "react";
 import {
   fetchContacts,
   deleteContact,
-} from "../redux/Contacts/contactsOperation";
-import { getPageNumber } from "../redux/Contacts/actions";
-
+} from "../../redux/Contacts/contactsOperation";
+import { incrementPageNumber } from "../../redux/Contacts/actions";
 import {
   visibleContacts,
   getPage,
-} from "../redux/Selectors/contactListSelectors";
+} from "../../redux/Selectors/contactListSelectors";
 import { TableHeader, TableRow, Button } from "./ContactList.styled";
 import { createList } from "./createList";
 
@@ -32,15 +31,20 @@ const ContactsList = () => {
     dispatch(fetchContacts());
   }, [dispatch]);
 
-  const condition =
+  const btnCondition =
     contactsArr.length === 1 || contactsArr[listPage + 1] === undefined;
+
+  const pageCondition =
+    contactsArr[listPage] === undefined
+      ? contactsArr[listPage - 1]
+      : contactsArr[listPage];
 
   return (
     <>
       <Button
-        disabled={condition}
+        disabled={btnCondition}
         onClick={() => {
-          dispatch(getPageNumber(1));
+          dispatch(incrementPageNumber(1));
         }}
       >
         Show next
@@ -55,8 +59,8 @@ const ContactsList = () => {
           </tr>
         </thead>
         <tbody>
-          {sortedContacts.length > 0 &&
-            contactsArr[listPage].map((contact) => (
+          {contactsArr.length > 0 &&
+            pageCondition.map((contact) => (
               <TableRow key={contact.id}>
                 <td>{contact.name}</td>
                 <td>{contact.number}</td>

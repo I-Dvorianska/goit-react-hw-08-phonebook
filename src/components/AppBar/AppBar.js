@@ -1,8 +1,8 @@
 import UserMenu from "../UserMenu/UserMenu";
-import { isUserLoggedIn } from "../redux/Selectors/userSelectors";
+import { isUserLoggedIn } from "../../redux/Selectors/userSelectors";
 import { useSelector } from "react-redux";
 import { Wrapper, LoggedInMenu, ContactsLink } from "./AppBar.styled";
-import FirstNavigation from "../FirstNavigation/FirstNavigation";
+import PublicNavigation from "../PublicNavigation/PublicNavigation";
 
 const AppBar = () => {
   const isLoggedIn = useSelector(isUserLoggedIn);
@@ -16,7 +16,7 @@ const AppBar = () => {
             <UserMenu />
           </LoggedInMenu>
         ) : (
-          <FirstNavigation />
+          <PublicNavigation />
         )}
       </Wrapper>
     </header>

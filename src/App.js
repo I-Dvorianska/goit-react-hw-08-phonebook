@@ -1,11 +1,11 @@
 import { Switch } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import ContactsView from "./ContactsView/ContactsView";
-import RegisterForm from "./RegisterForm/RegisterForm";
-import LoginForm from "./LoginForm/LoginForm";
-import AppBar from "./AppBar/AppBar";
-import HomePage from "./HomePage/HomePage";
+import ContactsPage from "./pages/ContactsPage/ContactsPage";
+import RegisterPage from "./pages/RegisterPage/RegisterPage";
+import LoginPage from "./pages/LoginPage/LoginPage";
+import AppBar from "./components/AppBar/AppBar";
+import HomePage from "./pages/HomePage/HomePage";
 import PrivateRouter from "./Routers/PrivateRouter";
 import PublicRouter from "./Routers/PublicRouter";
 import { fetchCurrentUser } from "./redux/Users/usersOperation";
@@ -30,13 +30,13 @@ function App() {
               <HomePage />
             </PublicRouter>
             <PublicRouter path="/register" restricted>
-              <RegisterForm />
+              <RegisterPage />
             </PublicRouter>
             <PublicRouter path="/login" restricted>
-              <LoginForm />
+              <LoginPage />
             </PublicRouter>
             <PrivateRouter path="/contacts">
-              <ContactsView />
+              <ContactsPage />
             </PrivateRouter>
           </Switch>
         </>
